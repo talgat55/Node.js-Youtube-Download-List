@@ -1,0 +1,4 @@
+/node_modules/*
+/config/config.json
+*.mp4
+*.mp3
