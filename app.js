@@ -5,6 +5,7 @@ import config from './config/config.json';
  
 import path from 'path';
 import fs   from 'fs';
+import program   from 'commander';
 import ytdl from 'youtube-dl';
 
     let opts = {
@@ -45,9 +46,16 @@ let  playlist = (url) => {
   video.on('next', playlist);
  
 }
-      
+
+
+program
+  .version('0.0.1')
+  .option('-q, --query', 'Add Query') 
+  .parse(process.argv);
  
-    youtube("react.js tutorials", opts, (err, results) => { // search videos
+ if (program.query) {
+ 
+    youtube(program.query, opts, (err, results) => { // search videos
         if (err) {
 
             console.log(err); 
@@ -73,4 +81,5 @@ let  playlist = (url) => {
         }
 
     });
- 
+ };
+      
